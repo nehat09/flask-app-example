@@ -1,12 +1,13 @@
 import pytest
 
+from server import config
 from server import create_app, db
 from server.models.book import Book
 
 
 @pytest.fixture
 def app():
-	flask_app = create_app({'TESTING': True, 'SQLALCHEMY_DATABASE_URI': 'sqlite:///:memory:'})
+	flask_app = create_app(config.TestConfig)
 
 	with flask_app.app_context():
 		db.drop_all()

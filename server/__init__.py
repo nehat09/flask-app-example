@@ -1,17 +1,16 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+from server import config
+
 db = SQLAlchemy()
 
 
-def create_app(test_config=None):
+def create_app(config=config.DevelopmentConfig):
 	app = Flask(__name__)
 
-	# config
-	app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///example.sqlite'
-
-	if test_config:
-		app.config.update(test_config)
+	# get configuration from config object
+	app.config.from_object(config)
 
 	# register blueprints for APIs
 	from server.views import books
