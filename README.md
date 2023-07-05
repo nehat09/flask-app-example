@@ -1,6 +1,11 @@
 # flask-app-example
 
-`flask-app-example` is a prototype for creating a REST API using Flask. It includes writing the API code, writing tests with Test Driven Development and how to build and test the code.
+`flask-app-example` is a prototype for creating a REST API using Flask. This includes the API server, database connection to SQLite local database, tests and configuration for development and test run.
+
+The API is designed to save a "Book" defined by `ID, Name, Author` as:
+
+`GET /api/books` - returns all books in database
+`POST /api/books` with JSON `{'name': '<bookname>', 'author': '<authorname>'}` - saves a Book record to database
 
 ## Install
 
@@ -38,7 +43,16 @@ Install `dev` dependencies
 $ pipenv install --dev
 ```
 
-Run tests with `pytest`
+Run tests in folder `tests` with `pytest`
 ```
 python3 -m pytest tests
 ```
+
+To run one test file, specify `path/to/testfile`
+```
+python3 -m pytest tests/functional/test_app.py
+```
+
+## What's Next?
+- Add Build and Test (CI/CD) to the project
+ 
