@@ -4,8 +4,8 @@
 
 The API is designed to save a "Book" defined by `ID, Name, Author` as:
 
-`GET /api/books` - returns all books in database
-`POST /api/books` with JSON `{'name': '<bookname>', 'author': '<authorname>'}` - saves a Book record to database
+- `GET /api/books` - returns all books in database
+- `POST /api/books` with JSON `{'name': '<bookname>', 'author': '<authorname>'}` - saves a Book record to database
 
 ## Install
 
