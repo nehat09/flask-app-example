@@ -1,8 +1,15 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import logging
 
 from server import config
 
+logging.basicConfig(
+	level=logging.DEBUG,
+	format='[%(asctime)s] %(levelname)s: %(message)s'
+)
+
+logger = logging.getLogger(__name__)
 db = SQLAlchemy()
 
 
@@ -28,4 +35,5 @@ def create_app(config=config.DevelopmentConfig):
 	def version():
 		return {'version': '0.1'}
 
+	logger.info('Flask app initialized')
 	return app

@@ -5,6 +5,10 @@ from sqlalchemy.exc import SQLAlchemyError
 from server import db
 from server.models.book import Book
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 bp = Blueprint('books', __name__, url_prefix='/api')
 
 
@@ -38,7 +42,9 @@ def post_book():
 	try:
 		db.session.add(Book(name=name, author=author))
 		db.session.commit()
+		logger.info('Saved Book: %s saved successfully', name)
 	except SQLAlchemyError:
+		logger.error('Failed to save Book: %s to Database', name)
 		return jsonify({'error': 'Database Error'}), 500
 
 	return jsonify({'status': 'Created'}), 201

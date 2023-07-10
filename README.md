@@ -16,43 +16,30 @@ Clone the project:
 $ git clone https://github.com/nehat09/flask-app-example.git
 ```
 
-Create and activate `virtualenv` (macOS):
-```
-$ python3 -m venv .venv
-$ . .venv/bin/activate
-```
-
-Install dependencies with `pipenv`:
-```
-$ pip3 install pipenv
-$ pipenv install
-```
+This project uses `make` as a build tool. _Why?_ - `make` _makes it easier to build/test/run your project which is useful for development, as well as running builds in deployments (CI/CD)._
 
 ## Run
-
+Run the app with `make run` or just `make`(default). This will start up the flask app on `localhost:5000`:
 ```
-$ python3 -m app
+make run
 ```
-
-In a browser, go to `http://localhost:5000`, the page should load JSON response with version.
+In a browser, go to `localhost:5000`, should load a JSON response with version.
 
 ## Test
-
-Install `dev` dependencies
+Run all tests:
 ```
-$ pipenv install --dev
-```
-
-Run tests in folder `tests` with `pytest`
-```
-python3 -m pytest tests
+make test
 ```
 
-To run one test file, specify `path/to/testfile`
+Run a specific test file with `pytest path/to/testfile`
 ```
 python3 -m pytest tests/functional/test_app.py
 ```
 
-## What's Next?
-- Add Build and Test (CI/CD) to the project
- 
+
+Run `make clean` to cleanup the project folder, deleting any files generated during development.
+
+---
+
+**What's Next?**
+- Add Kubernetes CI/CD to the project
